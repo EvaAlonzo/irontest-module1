@@ -1,4 +1,5 @@
 //new array
+const { DefaultDeserializer } = require("v8")
 const Characters = require("./data")
 
 //Get the first three elements of the Array without altering the original Array
@@ -14,47 +15,77 @@ getAliens=()=>{
     let aliens = Characters.filter((item, index) =>{
         return item.species === "Alien"
     })
-   
     console.log('the alien is:',aliens)
 }
 getAliens()
 //create a new character and add it to the matrix and add consecutive identifiers (1,2, ... n) to all characters
 newCharacter=()=>{
     //...write your code here
-    Characters.push(
+    const id = Characters.forEach((item, i) =>{
+        item.id = i + 1
+    })
+    let newChar = (
         {
-            name: "Persona Fénix",
+            name: "Phoenixperson",
             status: "Alive",
             species: "ciborg",
             type: "",
-            gender: "Male"
+            gender: "Male",
+            id: id
         }
     )
 
-    console.log('New Charanter and id to all:', newCharacter)
+    let newArr= Characters.push(newChar)
+
+    console.log('New Character and id to all:', newArr)
 }
+newCharacter()
 //find the family smith (Morty, Beth, Summer, Jerry, Rick)  in a new Array called familySmith
 getFamilySmith=()=>{
-
     //...write your code here
-    
-
-
-    console.log('Family Smith:',/** here your new answer*/)
+    let smithFamily = Characters.filter((item, index) =>{
+        return item.name.includes("Smith")
+    })
+    console.log('Family Smith:', smithFamily)
 }
+newCharacter()
+
 //Jerry and Beth have divorced, remove Jerry from the Array Smith Family, and get a random family member and print all their values
 familyBroken=()=>{
     //...write your code here
+    let smithFamily = Characters.filter((item, index) =>{
+        return item.name.includes("Smith")
+    })
 
-    console.log('Family without Jerry',/** here your new answer*/)
-    console.log('Random member name:, status:, species:, type:, gender:')
+    const notJerry = smithFamily.filter((item) => { 
+        return item.name != "Jerry Smith"
+    })
+
+    const newMember = Characters[Math.floor(Math.random() * Characters.length)]
+    console.log('Family without Jerry',notJerry)
+    console.log('Random member name:, status:, species:, type:, gender:', newMember)
 }
+familyBroken()
+
 //The Final test, Rick needs to have more order, the original Array creates a new object, in which you group by status, without altering the original
 orderArray=()=>{
      //...write your code here
+     let alive = Characters.sort((item)=> {
+         return item.status.includes("Alive")
+     });
+     let dead = Characters.sort((item)=> {
+        return item.status.includes( "Dead")
+    });
+    let unkown = Characters.sort((item)=> {
+        return item.status.includes("unknown")
+    })
 
-    console.log('new order',/** here your new answer*/)
+
+     let newOrder = [alive, dead, unkown]
+
+    console.log('new order', newOrder)
 }
+orderArray()
 
 
 //In this part we execute our functions
