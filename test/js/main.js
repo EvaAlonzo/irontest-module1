@@ -1,26 +1,44 @@
 //new array
-
+const Characters = require("./data")
 
 //Get the first three elements of the Array without altering the original Array
 getFirtsThreeElements=()=>{
     //...write your code here
-
-    console.log('The first three',/** here your new answer*/)
+    let found3 = Characters.slice(0,3)
+    console.log('The first three', found3)
 }
+getFirtsThreeElements()
 //Find all the characters whose species is Aliens nad return in new array
 getAliens=()=>{
     //...write your code here
-    console.log('the alien is:',/** here your new answer*/)
+    let aliens = Characters.filter((item, index) =>{
+        return item.species === "Alien"
+    })
+   
+    console.log('the alien is:',aliens)
 }
+getAliens()
 //create a new character and add it to the matrix and add consecutive identifiers (1,2, ... n) to all characters
 newCharacter=()=>{
     //...write your code here
+    Characters.push(
+        {
+            name: "Persona Fénix",
+            status: "Alive",
+            species: "ciborg",
+            type: "",
+            gender: "Male"
+        }
+    )
 
-    console.log('New Charanter and id to all:',/** here your new answer*/)
+    console.log('New Charanter and id to all:', newCharacter)
 }
 //find the family smith (Morty, Beth, Summer, Jerry, Rick)  in a new Array called familySmith
 getFamilySmith=()=>{
+
     //...write your code here
+    
+
 
     console.log('Family Smith:',/** here your new answer*/)
 }
